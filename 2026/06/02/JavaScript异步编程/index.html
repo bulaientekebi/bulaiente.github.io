@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 异步编程详解</title>
+  <!-- 引入主题的 CSS 文件 -->
+  <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <!-- 引入头部 -->
+  <header class="site-header">
+  <h1 class="site-title">
+    <a href="/">我的技术博客</a>
+  </h1>
+  <nav class="site-nav">
+    <a href="/">首页</a>
+    <a href="/archives">归档</a>
+  </nav>
+</header>
+
+  <!-- 页面主体内容，由其他模板填充 -->
+  <main class="content">
+    <article class="post-detail">
+  <h1 class="post-title">JavaScript 异步编程详解</h1>
+  <div class="post-meta">
+    <time>2026-06-02</time>
+  </div>
+  <div class="post-content">
+    <p>JavaScript 是单线程语言，异步编程是其核心特性之一。本文从回调到 async&#x2F;await 逐步梳理。</p>
+<h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><p>最早的异步处理方式，但容易造成”回调地狱”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;a.txt&#x27;</span>, <span class="keyword">function</span>(<span class="params">err, data</span>) &#123;</span><br><span class="line">  fs.<span class="title function_">readFile</span>(<span class="string">&#x27;b.txt&#x27;</span>, <span class="keyword">function</span>(<span class="params">err, data2</span>) &#123;</span><br><span class="line">    <span class="comment">// 嵌套越来越深...</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>ES6 引入，解决回调地狱问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;/api/data&#x27;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> res.<span class="title function_">json</span>())</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(data))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(err));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Promise-静态方法"><a href="#Promise-静态方法" class="headerlink" title="Promise 静态方法"></a>Promise 静态方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>([p1, p2, p3])     <span class="comment">// 全部成功才成功</span></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">race</span>([p1, p2, p3])    <span class="comment">// 第一个完成即返回</span></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">allSettled</span>([p1, p2])  <span class="comment">// 等待全部完成（无论成败）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async&#x2F;await"></a>async&#x2F;await</h2><p>ES2017 引入，异步代码同步写。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">loadData</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;/api/data&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> res.<span class="title function_">json</span>();</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>出现时间</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>回调</td>
+<td>ES5</td>
+<td>简单异步操作</td>
+</tr>
+<tr>
+<td>Promise</td>
+<td>ES6</td>
+<td>链式调用、并发控制</td>
+</tr>
+<tr>
+<td>async&#x2F;await</td>
+<td>ES2017</td>
+<td>复杂异步流程</td>
+</tr>
+</tbody></table>
+
+  </div>
+</article>
+
+  </main>
+
+  <!-- 引入底部 -->
+  <footer class="site-footer">
+  <p>&copy; 2026 你的名字</p>
+</footer>
+
+  <!-- 引入主题的 JS 文件 -->
+<!--   <script src="/js/main.js"></script> -->
+</body>
+</html>

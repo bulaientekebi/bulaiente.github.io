@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 布局完全指南</title>
+  <!-- 引入主题的 CSS 文件 -->
+  <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <!-- 引入头部 -->
+  <header class="site-header">
+  <h1 class="site-title">
+    <a href="/">我的技术博客</a>
+  </h1>
+  <nav class="site-nav">
+    <a href="/">首页</a>
+    <a href="/archives">归档</a>
+  </nav>
+</header>
+
+  <!-- 页面主体内容，由其他模板填充 -->
+  <main class="content">
+    <article class="post-detail">
+  <h1 class="post-title">CSS 布局完全指南</h1>
+  <div class="post-meta">
+    <time>2026-06-02</time>
+  </div>
+  <div class="post-content">
+    <p>CSS 布局是前端开发中最核心的技能之一。本文梳理 Flexbox 和 Grid 两大现代布局方案。</p>
+<h2 id="Flexbox-弹性布局"><a href="#Flexbox-弹性布局" class="headerlink" title="Flexbox 弹性布局"></a>Flexbox 弹性布局</h2><p>适用于<strong>一维</strong>布局（行或列）。</p>
+<h3 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row;        <span class="comment">/* 主轴方向 */</span></span><br><span class="line">  <span class="attribute">justify-content</span>: center;    <span class="comment">/* 主轴对齐 */</span></span><br><span class="line">  <span class="attribute">align-items</span>: center;        <span class="comment">/* 交叉轴对齐 */</span></span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap;            <span class="comment">/* 换行 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;         <span class="comment">/* 伸缩比例 */</span></span><br><span class="line">  <span class="attribute">align-self</span>: auto; <span class="comment">/* 单独对齐 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Grid-网格布局"><a href="#Grid-网格布局" class="headerlink" title="Grid 网格布局"></a>Grid 网格布局</h2><p>适用于<strong>二维</strong>布局（行+列）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">1</span>fr);</span><br><span class="line">  <span class="attribute">gap</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="响应式网格"><a href="#响应式网格" class="headerlink" title="响应式网格"></a>响应式网格</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="built_in">minmax</span>(<span class="number">300px</span>, <span class="number">1</span>fr));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><strong>Flexbox</strong>：导航栏、居中、一维排列</li>
+<li><strong>Grid</strong>：整体页面布局、卡片网格</li>
+<li>两者可以嵌套使用，互补而非替代</li>
+</ul>
+
+  </div>
+</article>
+
+  </main>
+
+  <!-- 引入底部 -->
+  <footer class="site-footer">
+  <p>&copy; 2026 你的名字</p>
+</footer>
+
+  <!-- 引入主题的 JS 文件 -->
+<!--   <script src="/js/main.js"></script> -->
+</body>
+</html>

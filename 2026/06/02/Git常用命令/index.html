@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git 常用命令速查</title>
+  <!-- 引入主题的 CSS 文件 -->
+  <link rel="stylesheet" href="/css/style.css">
+<meta name="generator" content="Hexo 8.1.2"></head>
+<body>
+  <!-- 引入头部 -->
+  <header class="site-header">
+  <h1 class="site-title">
+    <a href="/">我的技术博客</a>
+  </h1>
+  <nav class="site-nav">
+    <a href="/">首页</a>
+    <a href="/archives">归档</a>
+  </nav>
+</header>
+
+  <!-- 页面主体内容，由其他模板填充 -->
+  <main class="content">
+    <article class="post-detail">
+  <h1 class="post-title">Git 常用命令速查</h1>
+  <div class="post-meta">
+    <time>2026-06-02</time>
+  </div>
+  <div class="post-content">
+    <p>Git 是现代开发必备的版本控制工具，本文整理日常高频命令。</p>
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init              <span class="comment"># 初始化仓库</span></span><br><span class="line">git <span class="built_in">clone</span> &lt;url&gt;       <span class="comment"># 克隆远程仓库</span></span><br><span class="line">git status            <span class="comment"># 查看状态</span></span><br><span class="line">git add .             <span class="comment"># 暂存所有更改</span></span><br><span class="line">git commit -m <span class="string">&quot;msg&quot;</span>   <span class="comment"># 提交</span></span><br><span class="line">git push              <span class="comment"># 推送到远程</span></span><br><span class="line">git pull              <span class="comment"># 拉取远程更新</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git branch            <span class="comment"># 查看分支</span></span><br><span class="line">git branch &lt;name&gt;     <span class="comment"># 创建分支</span></span><br><span class="line">git checkout &lt;name&gt;   <span class="comment"># 切换分支</span></span><br><span class="line">git merge &lt;name&gt;      <span class="comment"># 合并分支</span></span><br><span class="line">git branch -d &lt;name&gt;  <span class="comment"># 删除分支</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git restore &lt;file&gt;    <span class="comment"># 撤销工作区修改</span></span><br><span class="line">git reset HEAD &lt;file&gt; <span class="comment"># 取消暂存</span></span><br><span class="line">git reset --soft HEAD~1  <span class="comment"># 撤销最近一次 commit（保留更改）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看历史"><a href="#查看历史" class="headerlink" title="查看历史"></a>查看历史</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline     <span class="comment"># 简洁提交历史</span></span><br><span class="line">git diff              <span class="comment"># 查看未暂存的更改</span></span><br><span class="line">git diff --staged     <span class="comment"># 查看已暂存的更改</span></span><br></pre></td></tr></table></figure>
+
+<p>掌握以上命令可以应付 90% 的日常开发场景！</p>
+
+  </div>
+</article>
+
+  </main>
+
+  <!-- 引入底部 -->
+  <footer class="site-footer">
+  <p>&copy; 2026 你的名字</p>
+</footer>
+
+  <!-- 引入主题的 JS 文件 -->
+<!--   <script src="/js/main.js"></script> -->
+</body>
+</html>
